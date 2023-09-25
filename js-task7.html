@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Train Animation</title>
+    <style>
+        /* Train Styles */
+        .train {
+            width: 100px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            transition: left 2s linear;
+        }
+
+        /* Button Styles */
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="train"></div>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+
+    <script>
+        const train = document.querySelector('.train');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        let animationInterval;
+
+        function moveTrain() {
+            train.style.left = '100%'; // Move the train to the right edge of the container
+            animationInterval = setInterval(() => {
+                train.style.transition = 'none'; // Remove transition for instant backward movement
+                train.style.left = '0'; // Move the train back to the left edge
+                setTimeout(() => {
+                    train.style.transition = 'left 2s linear'; // Restore transition for smooth movement
+                    train.style.left = '100%'; // Move the train to the right edge again
+                }, 10);
+            }, 2000); // Repeat the animation every 2 seconds
+        }
+
+        function stopTrain() {
+            clearInterval(animationInterval); // Clear the animation interval
+            train.style.transition = 'none'; // Remove any ongoing transition
+            train.style.left = '0'; // Reset the train to the left edge
+        }
+
+        startButton.addEventListener('click', moveTrain);
+        stopButton.addEventListener('click', stopTrain);
+    </script>
+</body>
+</html>

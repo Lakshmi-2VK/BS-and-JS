@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        /* Styling for the form container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #registrationForm {
+            width: 1000px;
+            background: linear-gradient(to bottom,rgb(255, 255, 156) , rgb(191, 25, 197));
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    
+        }
+
+        form > div {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: inline-block;
+
+        }
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form input[type="number"],
+        form input[type="tel"],
+        form select,
+        form textarea {
+            width: 60%;
+            height: 20%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .invalid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="registrationForm">
+        
+        <form id="regForm" style="align-items: center; text-align: center;" action="#" method="post">
+            <h2 style="color: blue; text-align: center;">Registration Form</h2>
+            <div>
+                <b>First Name</b> <input  type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                <span class="valid" id="firstNameValid"></span>
+            </div>
+            <div>
+                <b>Last Name</b> <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                <span class="valid" id="lastNameValid"></span>
+            </div>
+            <div>
+                <b>Email</b> <input  type="email" id="email" name="email" placeholder="Email" required>
+                <span class="valid" id="emailValid"></span>
+            </div>
+            <div>
+                <b>Password</b> <input type="password" id="password" name="password" placeholder="Password" required>
+                <span class="valid" id="passwordValid"></span>
+            </div>
+            <div>
+                <b>Re-enter Password</b> <input  type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter Password" required>
+                <span class="valid" id="confirmPasswordValid"></span>
+            </div>
+            <div>
+                <b>Gender: </b>
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" required>
+                <label for="female">Female</label>
+
+            </div>
+            <div>
+                <b>Age</b> <input type="number" id="age" name="age" placeholder="Age" required>
+                <span class="valid" id="ageValid"></span>
+            </div>
+            <div>
+                <b>Phone Number </b><input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                <span class="valid" id="phoneNumberValid"></span>
+            </div>
+            <div>
+                <b>Address</b> <textarea id="address" name="address" placeholder="Address" required></textarea>
+                <span class="valid" id="addressValid"></span>
+            </div>
+            <div>
+                <label for="state"><b>State:</b></label>
+                <input  type="text" id="state" name="state" required>
+                <span class="valid" id="stateValid"></span>
+            </div>
+            <div>
+                <label for="country"><b>Country:</b></label>
+                <select id="country" name="country" required>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UK">UK</option>
+                    <!-- Add more countries as needed -->
+                </select>
+                <span class="valid" id="countryValid"></span>
+            </div>
+            <div>
+                <b>Languages Known:</b>
+                <input type="checkbox" id="english" name="languages" value="English">
+                <label for="english">English</label>
+                <input type="checkbox" id="spanish" name="languages" value="Spanish">
+                <label for="spanish">Spanish</label>
+                <input type="checkbox" id="french" name="languages" value="French">
+                <label for="french">French</label>
+                <!-- Add more languages as needed -->
+            </div>
+            <div>
+                <input type="checkbox" id="declaration" name="declaration" required>
+                <label style="width: 400px; padding-right: 500px;" for="declaration">I hereby declare that all the given details are true.</label>
+                
+            </div>
+            <div>
+                <label style="width: 400px; padding-left: 700px;"> Log in to <a href="#">Ethnus</a></label>
+            </div>
+            <button style="color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); border:solid black ; border-radius: 20px;" type="button" id="registerButton">Register</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to check the strength of a password
+        function checkPasswordStrength(password) {
+            // Add your password strength criteria here
+            // For example, you can check for minimum length, the presence of special characters, etc.
+            return password.length >= 8;
+        }
+
+        // Function to validate the form and display strength messages
+        function validateForm() {
+            const firstNameValid = document.getElementById("firstNameValid");
+            const lastNameValid = document.getElementById("lastNameValid");
+            const emailValid = document.getElementById("emailValid");
+            const passwordValid = document.getElementById("passwordValid");
+            const confirmPasswordValid = document.getElementById("confirmPasswordValid");
+            const ageValid = document.getElementById("ageValid");
+            const phoneNumberValid = document.getElementById("phoneNumberValid");
+            const addressValid = document.getElementById("addressValid");
+            const stateValid = document.getElementById("stateValid");
+            const countryValid = document.getElementById("countryValid");
+
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const age = document.getElementById("age").value;
+            const phoneNumber = document.getElementById("phoneNumber").value;
+            const address = document.getElementById("address").value;
+            const state = document.getElementById("state").value;
+            const country = document.getElementById("country").value;
+
+            // Check password strength and display messages
+            if (checkPasswordStrength(password)) {
+                passwordValid.textContent = "STRONG";
+                passwordValid.className = "valid";
+            } else {
+                passwordValid.textContent = "POOR";
+                passwordValid.className = "invalid";
+            }
+
+            // Check if passwords match
+            if (password === confirmPassword) {
+                confirmPasswordValid.textContent = "STRONG";
+                confirmPasswordValid.className = "valid";
+            } else {
+                confirmPasswordValid.textContent = "POOR";
+                confirmPasswordValid.className = "invalid";
+            }
+
+            // You can add more validation logic for other fields here
+
+            // Example: Age should be a number between 18 and 99
+            if (/^\d+$/.test(age) && age >= 18 && age <= 99) {
+                ageValid.textContent = "STRONG";
+                ageValid.className = "valid";
+            } else {
+                ageValid.textContent = "POOR";
+                ageValid.className = "invalid";
+            }
+
+            // Reset validation messages for other fields
+            // Add similar code for other fields
+
+            // If all validations pass, you can submit the form
+            if (
+                passwordValid.textContent === "STRONG" &&
+                confirmPasswordValid.textContent === "STRONG" &&
+                ageValid.textContent === "STRONG"
+                // Add more conditions as needed
+            ) {
+                alert("Form submitted successfully!");
+                // Uncomment the line below to submit the form to a server
+                // document.getElementById("regForm").submit();
+            }
+        }
+
+        // Event listener for the Register button
+        document.getElementById("registerButton").addEventListener("click", validateForm);
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #bebcbc;
+        }
+        .form-container {
+            background-color: #bebcbc;
+            color: #000000;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+        .form-container .form-group {
+            margin-bottom: 20px;
+        }
+        .form-container .form-group input {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+        }
+        .form-container .form-group input::placeholder {
+            color: #bbb;
+        }
+        .form-container .form-group .input-icon {
+            color: #000000;
+            position: relative;
+        }
+        .form-container .form-group .input-icon i {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .btn-send {
+            text-align: center;
+            align-content: center;
+            background-color: #ffb20c;
+            color: #ffffff;
+        }
+        .err{
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>   
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 form-container">
+                <form>
+                    <div class="form-group row">
+                        <label for="firstName" class="col-sm-4 col-form-label">First Name</label>
+                        <div class="col-sm-8 input-icon">
+                            <i class="fa fa-user"></i>
+                            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                            <div id="validationMessage" name= "validationMessage" class="err"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lastName" class="col-sm-4 col-form-label">Last Name</label>
+                        <div class="col-sm-8 input-icon">
+                            <i class="fa fa-user"></i>
+                            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-4 col-form-label">Email</label>
+                        <div class="col-sm-8 input-icon">
+                            <i class="fa fa-envelope"></i>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email-id">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="phone" class="col-sm-4 col-form-label">Phone</label>
+                        <div class="col-sm-8 input-icon">
+                            <i class="fa fa-phone"></i>
+                            <input type="number" class="form-control" id="phone" placeholder="Enter phone number">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add" class="col-sm-4 col-form-label">Address</label>
+                        <div class="col-sm-8 input-icon">
+                            <i class="fa fa-envelope"></i>
+                            <input type="text" class="form-control" id="add" placeholder="Enter Address">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="city" class="col-sm-4 col-form-label">City</label>
+                        <div class="col-sm-8 input-icon">
+                            <i class="fa fa-envelope"></i>
+                            <input type="text" class="form-control" id="city" placeholder="Enter City name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="state" class="col-sm-4 col-form-label">State</label>
+                        <div class="col-sm-8 input-icon">
+                            <i class="fa fa-map-marker"></i>
+                            <select class="form-control" id="state">
+                                <option value="">Select State</option>
+                                <option value="state1">Delhi</option>
+                                <option value="state2">Kerala</option>
+                                <option value="state3">Bihar</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="host" class="col-sm-4 col-form-label">Do you have Hosting?</label>
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="hosting" id="hostingYes" value="yes">
+                                <label class="form-check-label" for="hostingYes">Yes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="hosting" id="hostingNo" value="no">
+                                <label class="form-check-label" for="hostingNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="city" class="col-sm-4 col-form-label">Project Description</label>
+                        <div class="col-sm-8 input-icon">
+                            <i class="fa fa-pencil"></i>
+                            <textarea class="form-control" id="projectDescription" rows="4" placeholder="Project Description"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit"  class="btn btn-send">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const hosting = document.querySelector('input[name="hosting"]:checked');
+            const projectDescription = document.getElementById('projectDescription').value;
+
+            if (!firstName || !lastName || !email || !phone || !address || !city || !state || !hosting || !projectDescription) {
+                document.getElementById('validationMessage').textContent = 'Please enter field.';
+                document.getElementById('validationMessage').style.color = '#ff0000';
+        }});
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" 
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

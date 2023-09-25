@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .form-container {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+        .form-container .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-container .form-group input,
+        .form-container .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container .form-group .error-text {
+            color: red;
+            display: none;
+        }
+        .form-container .form-group.error input,
+        .form-container .form-group.error select {
+            border-color: red;
+        }
+        .btn-submit {
+            border-radius: 5px;
+            width: 400px;
+            background-color: #e21d3e;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 form-container">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                        <div class="error-text">Please enter your name.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                        <div class="error-text">Please enter a valid email address.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        <div class="error-text">Please enter a password.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hobbies">Hobbies</label>
+                        <select class="form-control" id="hobbies" name="hobbies">
+                            <option value="">Select your hobbies</option>
+                            <option value="reading">Reading</option>
+                            <option value="cooking">Cooking</option>
+                            <option value="sports">Sports</option>
+                            <option value="traveling">Traveling</option>
+                        </select>
+                        <div class="error-text">Please select a hobby.</div>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#registrationForm").submit(function(event) {
+                event.preventDefault();
+                var formValid = true;
+
+                // Check if any field is empty
+                $(this).find("input, select").each(function() {
+                    if ($(this).val() === "") {
+                        $(this).parent().addClass("error");
+                        $(this).siblings(".error-text").show();
+                        formValid = false;
+                    } else {
+                        $(this).parent().removeClass("error");
+                        $(this).siblings(".error-text").hide();
+                    }
+                });
+
+                // If form is valid, you can submit it or perform other actions here
+                if (formValid) {
+                    alert("Form submitted successfully!");
+                    // Uncomment the following line to submit the form
+                    // $(this).unbind("submit").submit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
